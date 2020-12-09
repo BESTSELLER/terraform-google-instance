@@ -7,7 +7,8 @@ resource "google_compute_instance" "main" {
 
     boot_disk {
     initialize_params {
-      image = data.google_compute_image.main.self_link
+      image = var.os_verison
+      # image = data.google_compute_image.main.self_link
     }
 
     

@@ -7,7 +7,8 @@ resource "google_compute_instance" "main" {
 
     boot_disk {
     initialize_params {
-      image = var.os_version
+      image = "debian-cloud/debian-9"
+
       # image = data.google_compute_image.main.self_link
     }
 

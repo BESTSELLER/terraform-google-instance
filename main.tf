@@ -5,14 +5,10 @@ resource "google_compute_instance" "main" {
     machine_type = "n1-standard-1"
     zone         = var.zone
 
-    boot_disk {
+  boot_disk {
     initialize_params {
       image = "debian-cloud/debian-9"
-
-      # image = data.google_compute_image.main.self_link
     }
-
-    
   }
 
   network_interface {

@@ -12,3 +12,8 @@ variable "zone" {
   type = string
   description = "which zone the instance will be created."
 }
+
+variable "os_version" {
+  type = string
+  description = "The os version the server will be created with."
+}

@@ -4,6 +4,8 @@ module "web" {
   count   = 2
   name    = "web${count.index}"
   project = var.project
+  zone = var.zones[count.index]
+  os_version = "windows-2019"
 }
 
 module "app" {
@@ -12,8 +14,9 @@ module "app" {
   count   = 2
   name    = "app${count.index}"
   project = var.project
+  zone = var.zones[count.index]
+  os_version = "debian-9"
 }
-
 
 variable "project" {
   default = "es-dev-bc86"
@@ -21,5 +24,6 @@ variable "project" {
 
 variable "zones" {
   type = list
-  default = ["europe-west4a", "europe-west4b"]
+  default = ["europe-west4-a", "europe-west4-b"]
 }
+

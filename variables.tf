@@ -8,7 +8,7 @@ variable "project" {
   description = "The project id for where the instance will be created"
 }
 
-variable "zone" {
+variable "region" {
   type = string
   description = "which zone the instance will be created."
   default = "europe-west4"

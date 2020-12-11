@@ -1,5 +1,5 @@
 data "google_compute_image" "main" {
-  family = regex("[a-z]+-[0-9]+",var.os_version)
-  project  = regex("[a-z]+-cloud",var.os_version)
-  
+  family  = var.os_version["family"]
+  project = var.os_version["project"]
+
 }

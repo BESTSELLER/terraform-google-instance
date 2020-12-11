@@ -13,6 +13,12 @@ variable "zone" {
   description = "which zone the instance will be created."
 }
 
+variable "env" {
+  type = string
+  description = "(optional) describe your variable"
+  default = ""
+}
+
 variable "os_version" {
   type        = map
   description = "The os version the server will be created with."
@@ -20,4 +26,10 @@ variable "os_version" {
     project = "windows-cloud"
     family  = "windows-2019"
   }
+}
+
+locals {
+  network    = "projects/network-host-project-5361/global/networks/network-host-project-${data.google_project.project.labels["trust_zone"]}-trusted-zone-shared-vpc"
+  db_vm_size = "db-custom-${var.cpu_cores}-${var.ram_gb * 1024}"
+  env        = var.env == "" ? data.google_project.project.labels["env"] : var.env
 }

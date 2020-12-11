@@ -3,3 +3,7 @@ data "google_compute_image" "main" {
   project = var.os_version["project"]
 
 }
+
+data "google_project" "project" {
+  project_id = var.project
+}

@@ -1,9 +1,9 @@
 resource "google_compute_instance" "main" {
 
-    name = var.name
-    project = var.project
-    machine_type = "n1-standard-1"
-    zone         = var.zone
+  name         = var.name
+  project      = var.project
+  machine_type = "n1-standard-1"
+  zone         = var.zone
 
   boot_disk {
     initialize_params {
@@ -12,6 +12,6 @@ resource "google_compute_instance" "main" {
   }
 
   network_interface {
-      network = "default"
+    network = "default"
   }
 }

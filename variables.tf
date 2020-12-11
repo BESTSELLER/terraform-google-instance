@@ -30,6 +30,6 @@ variable "os_version" {
 
 locals {
   network    = "projects/network-host-project-5361/global/networks/network-host-project-${data.google_project.project.labels["trust_zone"]}-trusted-zone-shared-vpc"
-  db_vm_size = "db-custom-${var.cpu_cores}-${var.ram_gb * 1024}"
+  # db_vm_size = "db-custom-${var.cpu_cores}-${var.ram_gb * 1024}"
   env        = var.env == "" ? data.google_project.project.labels["env"] : var.env
 }

@@ -12,6 +12,6 @@ resource "google_compute_instance" "main" {
   }
 
   network_interface {
-    network = local.network
+    subnetwork = local.network
   }
 }

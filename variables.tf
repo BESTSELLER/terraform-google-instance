@@ -37,7 +37,7 @@ variable "specs" {
   }
 
 validation {
-    condition     = var.specs["ram"] < var.specs["cpu"] * 6
+    condition     = var.specs["ram"] <= var.specs["cpu"] * 6
     error_message = "There is a limit of 6 Gb per CPU. Please increase CPU or decrease RAM."
   }
 }

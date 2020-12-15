@@ -14,9 +14,9 @@ variable "zone" {
 }
 
 variable "env" {
-  type = string
+  type        = string
   description = "(optional) describe your variable"
-  default = ""
+  default     = ""
 }
 
 variable "os_version" {
@@ -29,23 +29,23 @@ variable "os_version" {
 }
 
 variable "specs" {
-  type = map
+  type        = map
   description = "(optional) describe your variable"
   default = {
     cpu = 1
     ram = 4
   }
 
-validation {
+  validation {
     condition     = var.specs["ram"] <= var.specs["cpu"] * 6
     error_message = "There is a limit of 6 Gb per CPU. Please increase CPU or decrease RAM."
   }
 }
 
 locals {
-  network    = "projects/network-host-project-5361/regions/europe-west4/subnetworks/${data.google_project.project.name}-default"
+  network = "projects/network-host-project-5361/regions/europe-west4/subnetworks/${data.google_project.project.name}-default"
   #     /network-host-project-${data.google_project.project.labels["trust_zone"]}-trusted-zone-shared-vpc"
   # projects/network-host-project-5361/regions/europe-west4/subnetworks/jazz-pri-dev-default
   vm_size = "custom-${var.specs["cpu"]}-${var.specs["ram"] * 1024}"
-  env        = var.env == "" ? data.google_project.project.labels["env"] : var.env
+  env     = var.env == "" ? data.google_project.project.labels["env"] : var.env
 }

@@ -4,9 +4,9 @@ resource "google_compute_instance" "main" {
   project      = var.project
   machine_type = local.vm_size
   zone         = var.zone
-  
-  allow_stopping_for_update = true 
-  
+
+  allow_stopping_for_update = true
+
   boot_disk {
     initialize_params {
       image = data.google_compute_image.main.self_link
@@ -15,5 +15,10 @@ resource "google_compute_instance" "main" {
 
   network_interface {
     subnetwork = local.network
+  }
+
+  metadata = {
+    windows-startup-script-ps1 = data.template_file.startup_script.rendered
+
   }
 }

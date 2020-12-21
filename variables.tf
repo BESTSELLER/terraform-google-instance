@@ -23,8 +23,8 @@ variable "os_version" {
   type        = map
   description = "The os version the server will be created with."
   default = {
-    project = "windows-cloud"
-    family  = "windows-2019"
+    project = "es-standalone-dev-ea40"
+    name    = "windows-2019"
   }
 }
 
@@ -44,8 +44,6 @@ variable "specs" {
 
 locals {
   network = "projects/network-host-project-5361/regions/europe-west4/subnetworks/${data.google_project.project.name}-default"
-  #     /network-host-project-${data.google_project.project.labels["trust_zone"]}-trusted-zone-shared-vpc"
-  # projects/network-host-project-5361/regions/europe-west4/subnetworks/jazz-pri-dev-default
   vm_size = "custom-${var.specs["cpu"]}-${var.specs["ram"] * 1024}"
   env     = var.env == "" ? data.google_project.project.labels["env"] : var.env
 }

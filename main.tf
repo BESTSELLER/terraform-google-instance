@@ -17,8 +17,9 @@ resource "google_compute_instance" "main" {
     subnetwork = local.network
   }
 
-  metadata = {
-    windows-startup-script-ps1 = data.template_file.startup_script.rendered
-
+  labels = {
+    "env" = var.env
   }
+
 }
+
